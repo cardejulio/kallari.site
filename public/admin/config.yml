@@ -1,0 +1,63 @@
+backend:
+  name: github
+  repo: USUARIO_GITHUB/kallari-site   # ← cambia por tu repo real
+  branch: main
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+publish_mode: editorial_workflow
+local_backend: false
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime" }
+      - { label: "Resumen", name: "excerpt", widget: "text" }
+      - { label: "Imagen", name: "cover", widget: "image", required: false }
+      - { label: "Cuerpo", name: "body", widget: "markdown" }
+
+  - name: "prensa"
+    label: "Sala de prensa"
+    folder: "content/prensa"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime" }
+      - { label: "Enlace externo (opcional)", name: "link", widget: "string", required: false }
+      - { label: "Cuerpo", name: "body", widget: "markdown" }
+
+  - name: "revista"
+    label: "Revista"
+    folder: "content/revista"
+    create: true
+    slug: "ed-{{year}}-{{month}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "PDF", name: "pdf", widget: "file" }
+      - { label: "Descripción", name: "body", widget: "markdown" }
+
+  - name: "podcast"
+    label: "Podcast y videos"
+    folder: "content/podcast"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime" }
+      - { label: "URL audio/video", name: "url", widget: "string" }
+      - { label: "Descripción", name: "body", widget: "markdown" }
+
+  - name: "transparencia"
+    label: "Transparencia (documentos)"
+    folder: "public/docs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nombre del documento", name: "title", widget: "string" }
+      - { label: "Archivo (PDF)", name: "file", widget: "file" }
